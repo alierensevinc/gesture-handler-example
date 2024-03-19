@@ -14,10 +14,13 @@ const App = () => {
   };
 
   return (
-    <SafeAreaView
-      style={[styles.container, { flex: 1, backgroundColor: "#F8FAE5" }]}
-    >
-      <GestureHandlerRootView>
+    <GestureHandlerRootView>
+      <SafeAreaView
+        style={[
+          styles.container,
+          { height: "100%", flexGrow: 1, backgroundColor: "#F8FAE5" },
+        ]}
+      >
         <CustomTouchable onPress={onPress}>
           <View style={[styles.container, styles.button]}>
             <Text style={styles.title}>Click me ! 🤖</Text>
@@ -28,8 +31,8 @@ const App = () => {
             <Text style={styles.title}>Click me !</Text>
           </View>
         </TouchableOpacity>
-      </GestureHandlerRootView>
-    </SafeAreaView>
+      </SafeAreaView>
+    </GestureHandlerRootView>
   );
 };
 
