@@ -18,3 +18,6 @@
 ## 📝 Notes
 
 - [`react-native-reanimated` docs](https://docs.swmansion.com/react-native-reanimated/)
+
+This project is developed for [this medium article](https://medium.com/@sevinc.aeren/react-nativede-gesture-handler-ve-reanimated-kullan%C4%B1m%C4%B1-2063f6c5c25a).
+
