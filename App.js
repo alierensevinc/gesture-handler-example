@@ -1,46 +1,53 @@
-import Animated, {
-  useSharedValue,
-  withTiming,
-  useAnimatedStyle,
-  Easing,
-} from "react-native-reanimated";
-import { View, Button } from "react-native";
+import {
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+import CustomTouchable from "./components/CustomTouchable";
 
-export default function AnimatedStyleUpdateExample(props) {
-  const randomWidth = useSharedValue(10);
-
-  const config = {
-    duration: 500,
-    easing: Easing.bezier(0.5, 0.01, 0, 1),
+const App = () => {
+  const onPress = () => {
+    console.log("Now playing Daft Punk - Touch 🤖📀🎼💽");
   };
 
-  const style = useAnimatedStyle(() => {
-    return {
-      width: withTiming(randomWidth.value, config),
-    };
-  });
-
   return (
-    <View
-      style={{
-        flex: 1,
-        alignItems: "center",
-        justifyContent: "center",
-        flexDirection: "column",
-      }}
+    <SafeAreaView
+      style={[styles.container, { flex: 1, backgroundColor: "#F8FAE5" }]}
     >
-      <Animated.View
-        style={[
-          { width: 100, height: 80, backgroundColor: "black", margin: 30 },
-          style,
-        ]}
-      />
-      <Button
-        title="toggle"
-        onPress={() => {
-          randomWidth.value = Math.random() * 350;
-        }}
-      />
-    </View>
+      <GestureHandlerRootView>
+        <CustomTouchable onPress={onPress}>
+          <View style={[styles.container, styles.button]}>
+            <Text style={styles.title}>Click me ! 🤖</Text>
+          </View>
+        </CustomTouchable>
+        <TouchableOpacity onPress={onPress}>
+          <View style={[styles.container, styles.button, { marginTop: 36 }]}>
+            <Text style={styles.title}>Click me !</Text>
+          </View>
+        </TouchableOpacity>
+      </GestureHandlerRootView>
+    </SafeAreaView>
   );
-}
+};
+
+const styles = StyleSheet.create({
+  container: {
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  button: {
+    height: 160,
+    aspectRatio: 1,
+    backgroundColor: "#43766C",
+    borderRadius: 25,
+  },
+  title: {
+    color: "#F8FAE5",
+    fontSize: 24,
+  },
+});
+
+export default App;
